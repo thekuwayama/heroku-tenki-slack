@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -z "$SERVER_PORT" ]; then
+if [ -z "$PORT" ]; then
     PORT=3000
 fi
 
@@ -16,4 +16,4 @@ if [ -z "$REDIRECT_PAGE" ]; then
     exit 1
 fi
 
-heroku_tenki_slack
+PORT=${PORT} SLACK_OAUTH_TOKEN=${SLACK_OAUTH_TOKEN} SLACK_CHANNEL=${SLACK_CHANNEL} REDIRECT_PAGE=${REDIRECT_PAGE} heroku_tenki_slack

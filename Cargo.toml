@@ -6,4 +6,8 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-actix-web = "3"
+actix-web = "3.3"
+chrono = "0.4"
+image = "0.23"
+tenki_slack_post = { git = "https://github.com/thekuwayama/tenki-slack-post.rs", rev = "016fa39" }
+tempfile = "3"

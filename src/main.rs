@@ -13,7 +13,7 @@ const TEMP_TENKI_IMAGE: &str = "tenki.jpg";
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    let server_port = env::var("SERVER_PORT").unwrap_or_else(|_| "8080".to_string());
+    let server_port = env::var("SERVER_PORT").unwrap_or_else(|_| "3000".to_string());
 
     HttpServer::new(|| {
         App::new().route(

@@ -1,5 +1,5 @@
 [package]
-name = "heroku-tenki-slack"
+name = "heroku_tenki_slack"
 version = "0.1.0"
 edition = "2018"
 

@@ -1,0 +1,17 @@
+{
+    "name": "heroku-tenki-slack",
+    "description": "Heroku Button for tenki.jp => Slack",
+    "repository": "https://github.com/thekuwayama/heroku-tenki-slack",
+    "stack": "container",
+    "env": {
+        "SLACK_OAUTH_TOKEN": {
+            "description": "Slack OAuth Token"
+        },
+        "SLACK_CHANNEL": {
+            "description": "Slack channel"
+        },
+        "REDIRECT_PAGE": {
+            "description": "redirect page"
+        }
+    }
+}

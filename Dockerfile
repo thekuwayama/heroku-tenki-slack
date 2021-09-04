@@ -1,11 +1,18 @@
 FROM rust:1.48.0
 
 USER root
-RUN cargo install --git https://github.com/thekuwayama/heroku-tenki-slack.git --branch main
 
-RUN mkdir -p /opt
-ENV TEMPDIR /opt/
-ADD entrypoint.sh /opt/entrypoint.sh
-RUN chmod +x /opt/entrypoint.sh
+WORKDIR /app
+ENV TEMPDIR /app
+COPY src /app/src
+COPY Cargo.toml /app/Cargo.toml
 
-CMD ["/opt/entrypoint.sh"]
+RUN cargo build --release
+RUN cargo install --path .
+
+COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+
+ENV TZ Asia/Tokyo
+
+CMD ["/app/entrypoint.sh"]

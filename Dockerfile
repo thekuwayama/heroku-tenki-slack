@@ -10,9 +10,6 @@ COPY Cargo.toml /app/Cargo.toml
 RUN cargo build --release
 RUN cargo install --path .
 
-COPY entrypoint.sh /app/entrypoint.sh
-RUN chmod +x /app/entrypoint.sh
-
 ENV TZ Asia/Tokyo
 
-CMD ["/app/entrypoint.sh"]
+CMD ["heroku_tenki_slack"]

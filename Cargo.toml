@@ -11,3 +11,5 @@ chrono = "0.4"
 image = "0.23"
 tenki_slack_post = { git = "https://github.com/thekuwayama/tenki-slack-post.rs", rev = "016fa39" }
 tempfile = "3"
+env_logger = "0.8"
+log = "0.4"

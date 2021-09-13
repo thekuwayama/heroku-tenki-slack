@@ -3,6 +3,7 @@ use actix_web::web::get;
 use actix_web::{App, HttpResponse, HttpServer};
 use chrono::Local;
 use image::io::Reader as ImageReader;
+use log::info;
 use std::env;
 use std::fs::File;
 use std::io::Cursor;
@@ -14,6 +15,10 @@ const TEMP_TENKI_IMAGE: &str = "tenki.jpg";
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     let port = env::var("PORT").unwrap_or_else(|_| "3000".to_string());
+    std::env::set_var("RUST_LOG", "INFO");
+    env_logger::init();
+
+    info!("Bootstrapping the server...");
 
     HttpServer::new(|| {
         App::new().route(

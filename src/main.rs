@@ -91,6 +91,13 @@ label {
     )
 }
 
+#[get("/")]
+async fn index() -> impl Responder {
+    HttpResponse::MovedPermanently()
+        .header(header::LOCATION, "/form")
+        .finish()
+}
+
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     let port = env::var("PORT").unwrap_or_else(|_| "3000".to_string());
@@ -98,7 +105,7 @@ async fn main() -> std::io::Result<()> {
     env_logger::init();
 
     info!("Bootstrapping the server...");
-    HttpServer::new(move || App::new().service(form).service(post))
+    HttpServer::new(move || App::new().service(form).service(post).service(index))
         .bind(format!("0.0.0.0:{}", port))?
         .run()
         .await
